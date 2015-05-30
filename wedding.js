@@ -39,6 +39,7 @@ var
         .transition({opacity: 1})
         .typed({
           strings: [
+            'wedding',
             'people',
             'events',
             'locations',
@@ -46,7 +47,7 @@ var
             'no spam',
             ''
           ],
-          contentType: 'text',
+          contentType: 'html',
           typeSpeed: 50,
           startDelay: transitionSpeed/2,
           loop: false,
