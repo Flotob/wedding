@@ -1,0 +1,72 @@
+html { 
+   width:100%; 
+   height:100%; 
+   background:url(wedding.jpg) center center no-repeat;
+   background-size: cover;
+}
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+input {
+  position: absolute;
+  font-size: 700%;
+  left: 13%; top: 42.5%;
+  height: 16.5%; width: 75.5;        
+  padding-left: 0;
+  width: 75.5%;
+  text-align: center;  
+  z-index: 1;
+  background-color: rgb(244, 229, 210);
+  /*background-image: linear-gradient(right, rgb(244, 229, 210) 0%, rgb(244, 229, 210) 100%);*/
+  border: none;
+  opacity: 0;
+  outline: none;
+  font-family: 'Helvetica', sans-serif;
+  /*font-family: 'Rockwell Extra Bold', 'Rockwell Bold', monospace;*/
+  /*font-family: 'Erica One', cursive;*/
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;  
+}
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;
+  }
+}
