@@ -1,7 +1,7 @@
 html { 
    width:100%; 
    height:100%; 
-   background:url(wedding.jpg) center center no-repeat;
+   background:url(../img/wedding.jpg) center center no-repeat;
    background-size: cover;
 }
 
