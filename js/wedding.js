@@ -39,12 +39,10 @@ var
         .transition({opacity: 1})
         .typed({
           strings: [
-            'wedding',
             'people',
             'events',
             'locations',
             'subscribe now',
-            'no spam',
             ''
           ],
           contentType: 'html',
