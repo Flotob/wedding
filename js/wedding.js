@@ -1,9 +1,10 @@
 var
-  // wedding = 'W E D D I N G', // this needs no further comment
   wedding = '',
 
   animation = (function () { // animation control
-    var transitionSpeed = 1000; // in ms
+    var transitionSpeed = 1000, // in ms
+        bgcanvas = $('body'),
+        img_path = 'img/';
 
     // settings
     $.fx.speeds._default = transitionSpeed;
@@ -64,9 +65,43 @@ var
     }
 
     function input (o) {
-      o.value = '@';
-      o.focus();
-      $(o).setCursorPosition(0);
+      $(o)
+        .val('@')
+        .setCursorPosition(0)
+        .keypress(function (event) {
+          if (event.keyCode == 13) { // use type conversion in case keyCode delivered as string in other browsers
+            thankyou(o);
+          }
+        })        
+        .focus();
+    }
+
+    function bg (img) {
+      bgcanvas.css({
+        'backgroundImage': 'url(' + img_path + img + ')',
+        'backgroundSize': '100%',
+        'backgroundPosition': '0 0'
+      });
+    }
+
+    function thankyou(o) {
+      bg('kiss.png');
+      var msg = $('<div class="thanks">thank you</div>')
+        .typed({
+          strings: [
+            'we sent you a confirmation email',
+            'thank you',
+            ':)'
+          ],
+          contentType: 'html',
+          typeSpeed: 50,
+          startDelay: 0,
+          loop: false,
+          showCursor: true,
+          cursorChar: '|'
+        });
+
+      $(o).replaceWith(msg);
     }
 
     // api
@@ -82,10 +117,7 @@ var
     .prependTo('body')
     .on('click', function () {
       animation.start(this);
-    })
-    // .on('mouseover', function () {
-    //   animation.start(this);
-    // });
+    });
 
   // initialize canvas
   animation.reset(canvas);
