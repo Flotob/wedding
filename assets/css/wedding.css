@@ -41,22 +41,16 @@ body {
   letter-spacing: 0.5em;
 }
 
-.fullPage {
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgb(255, 255, 255);
+.featherlight-content {
+  border-radius: 4px;
 }
 
 input {
   position: absolute;
   font-size: 700%;
   left: 13%; top: 42.5%;
-  height: 16.5%; width: 75.5;        
+  height: 16.5%; width: 75.5%;
   padding-left: 0;
-  width: 75.5%;
   text-align: center;  
   z-index: 1;
   background-color: rgb(244, 229, 210);
