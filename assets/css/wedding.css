@@ -25,7 +25,11 @@ body {
   bottom: 0; right: 0;
   background: black;
   display: block;
-  opacity: 0.5;
+  opacity: 0.3;
+  transition: 2s;
+}
+.imprint:hover {
+  opacity: 1;
 }
 
 .thanks {
