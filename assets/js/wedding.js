@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var
     wedding = '',
-
     animation = (function () { // animation control
       var transitionSpeed = 1000, // in ms
           bgcanvas = $('body'),
@@ -66,7 +65,8 @@ $(document).ready(function() {
       }
 
       function input (o) {
-        var submission = false;
+        var submission = false,
+            form = $(o).parent('form');
 
         $(o)
           .val('@')
@@ -74,18 +74,23 @@ $(document).ready(function() {
           .on('keypress', function (event) {
             if (event.keyCode == 13 && !submission) {
               submission = true;
-              $.ajax({
-                method: 'POST',
+              $(o).attr('type', 'email');
+              $(o).prop('disabled', true);
+
+              form.ajaxChimp({
                 url: 'http://wedding.us11.list-manage.com/subscribe/post?u=e47873f5433b478ab722f8608&amp;id=a4d95778c2',
-                data: { EMAIL: o.value }
+                // language: window.navigator.userLanguage || window.navigator.language,
+                callback: function (resp) {
+                  if (resp.result === 'success')
+                    thankyou(form);
+                  else {
+                    submission = false;
+                    $(o).attr('type', 'text');
+                    $(o).prop('disabled', false);
+                    console.log('error');
+                  }
+                }
               })
-                .done(function () {
-                  thankyou(o);
-                })
-                .fail(function () {
-                  o.value = 'error, try again!'
-                  submission = false;
-                });
             }
           })
           .focus();
@@ -128,11 +133,12 @@ $(document).ready(function() {
     })(),
 
     // the canvas for the animation (=input field)
-    canvas = $('<input type="text" name="EMAIL" dir="ltr" value="' + wedding + '">')
+    canvas = $('<input type="text" id="mc-email" dir="ltr" value="' + wedding + '">')
       .prependTo('body')
       .on('click', function () {
         animation.start(this);
-      });
+      })
+      .wrap('<form id="mc-form" />')
 
     // initialize canvas
     animation.reset(canvas);
